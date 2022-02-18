@@ -1,0 +1,29 @@
+{
+  "name": "firefolio",
+  "version": "1.0.0",
+  "description": "Stock Tracking Web Application with Machine Learning Stock Analyser",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tssibanda/FIREfolio.git"
+  },
+  "author": "C18727971 Thamsanqa Sibanda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tssibanda/FIREfolio/issues"
+  },
+  "homepage": "https://github.com/tssibanda/FIREfolio#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
