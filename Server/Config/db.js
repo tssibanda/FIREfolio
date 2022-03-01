@@ -1,3 +1,8 @@
+/* 
+*   Mongo DB Configuration file
+*   connection to mongoDB  
+*/
+
 // import mongoose
 const mongoose = require('mongoose')
 

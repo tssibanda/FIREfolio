@@ -1,3 +1,7 @@
+/* 
+*   all the functions that handle the different CRUD API calls.
+*/
+
 // express async handler for the database
 const asyncHandler = require('express-async-handler')
 
