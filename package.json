@@ -22,7 +22,9 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
-    "mongoose": "^6.2.2"
+    "mongoose": "^6.2.2",
+    "stocksocket": "^2.1.2",
+    "yahoo-stock-prices": "^1.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

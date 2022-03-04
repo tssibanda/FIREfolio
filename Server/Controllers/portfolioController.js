@@ -2,6 +2,10 @@
 *   all the functions that handle the different CRUD API calls.
 */
 
+// experiment 
+const StockSocket = require('stocksocket')
+const yahooStocks = require('yahoo-stock-prices')
+
 // express async handler for the database
 const asyncHandler = require('express-async-handler')
 
@@ -16,6 +20,18 @@ const Stock = require('../Models/stockModel')
 const getPortfolio = asyncHandler(async (req, res) => {
     // get all stocks in DB
     const stocks = await Stock.find()
+    // const symbols = stocks
+
+    console.log(stocks)
+    // // experiment Note: Stock Market only opens at 2:30pm dublin time 
+    // const stockticker =  'AAPL'
+    // StockSocket.addTicker(stockticker, stockPriceChanged)
+    // function stockPriceChanged(data) {
+    //     //Choose what to do with your data as it comes in.
+    //     console.log(data)
+    //     // StockSocket.removeTicker(stockticker)
+    // }
+
     res.status(200).json(stocks)
 })
 
