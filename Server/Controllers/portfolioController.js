@@ -1,5 +1,5 @@
 /* 
-*   all the functions that handle the different CRUD API calls.
+*   all the functions that handle the different CRUD API calls for the stocks.
 */
 
 // express async handler for the database
