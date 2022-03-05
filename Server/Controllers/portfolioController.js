@@ -25,12 +25,13 @@ const getPortfolio = asyncHandler(async (req, res) => {
     console.log(stocks)
     // // experiment Note: Stock Market only opens at 2:30pm dublin time 
     // const stockticker =  'AAPL'
-    // StockSocket.addTicker(stockticker, stockPriceChanged)
-    // function stockPriceChanged(data) {
-    //     //Choose what to do with your data as it comes in.
-    //     console.log(data)
-    //     // StockSocket.removeTicker(stockticker)
-    // }
+    // const stockticker = stocks[0].symbol
+    StockSocket.addTicker(stockticker, stockPriceChanged)
+    function stockPriceChanged(data) {
+        //Choose what to do with your data as it comes in.
+        console.log(data)
+        // StockSocket.removeTicker(stockticker)
+    }
 
     res.status(200).json(stocks)
 })
