@@ -8,6 +8,11 @@ const { long } = require('webidl-conversions')
 
 // schema
 const stockSchema = mongoose.Schema({
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'User',
+        },
         symbol: {
             type: String,
             required: [true, 'Input a valid stock ticker symbol'],

@@ -31,6 +31,7 @@ app.use(express.urlencoded({extended: false}))
 
 // routes
 app.use('/api/portfolio', require('./Routes/portfolioRoutes'))
+app.use('/api/users', require('./Routes/userRoutes'))
 
 // error handlers
 app.use(errorHandler)

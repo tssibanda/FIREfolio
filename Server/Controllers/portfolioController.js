@@ -1,5 +1,5 @@
 /* 
-*   all the functions that handle the different CRUD API calls.
+*   all the functions that handle the different CRUD API calls for the stocks.
 */
 
 // express async handler for the database
@@ -8,6 +8,9 @@ const asyncHandler = require('express-async-handler')
 // import stock schema
 const Stock = require('../Models/stockModel')
 
+// import user schema
+const User = require('../Models/userModel')
+
 /***************************** 
     Descriptioon:   Get Portfolio
     Route:          GET /api/portfolio
@@ -15,7 +18,7 @@ const Stock = require('../Models/stockModel')
 *****************************/
 const getPortfolio = asyncHandler(async (req, res) => {
     // get all stocks in DB
-    const stocks = await Stock.find()
+    const stocks = await Stock.find({user: req.user.id})
     res.status(200).json(stocks)
 })
 
@@ -32,12 +35,13 @@ const addStock = asyncHandler(async (req, res) => {
 
     // create new holding
     const stock = await Stock.create({
+        user: req.user.id,
         symbol: req.body.symbol,
         date_bought: req.body.date_bought,
         no_shares: req.body.no_shares,
         price_bought_at: req.body.price_bought_at,
-        notes: req.body.notes
-
+        notes: req.body.notes,
+        
     })
 
     res.status(200).json(stock)
@@ -54,6 +58,20 @@ const updateStock = asyncHandler(async (req, res) => {
     if(!stock){
         res.status(400)
         throw new Error('Stock not in portfolio')
+    }
+
+    const user = await User.findById(req.user.id)
+
+    //check user exists
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // check logged in user is updating their own stocks
+    if(stock.user.toString() !== user.id){
+        res.status(401)
+        throw new Error('User not authorised')
     }
 
     const updatedStock = await Stock.findByIdAndUpdate(
@@ -74,6 +92,20 @@ const deleteStock = asyncHandler(async (req, res) => {
     if(!stock){
         res.status(400)
         throw new Error('Stock not in portfolio')
+    }
+
+    const user = await User.findById(req.user.id)
+
+    //check user exists
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // check logged in user is updating their own stocks
+    if(stock.user.toString() !== user.id){
+        res.status(401)
+        throw new Error('User not authorised')
     }
 
     await stock.remove()
