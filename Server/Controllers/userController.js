@@ -55,6 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
             email: user.email,
             dob: user.dob,
             address: user.address,
+            token: generateToken(user._id)
         })
     }else{
         res.status(400)
@@ -81,6 +82,7 @@ const loginUser = asyncHandler(async (req, res) => {
             email: user.email,
             dob: user.dob,
             address: user.address,
+            token: generateToken(user._id)
         })
     }else{
         res.status(400)
@@ -94,8 +96,24 @@ const loginUser = asyncHandler(async (req, res) => {
     Access:         private
 *****************************/
 const getAccount = asyncHandler(async (req, res) => {
-    res.json({message: 'User Account'})
+    const {_id, fullname, email} = await User.findById(req.user.id)
+
+    res.status(200).json({
+        id: _id,
+        fullname,
+        email,
+    })
 })
+
+// Function to generate Json Web Token
+const generateToken = (id) => {
+    return jwt.sign(
+        { id }, 
+        process.env.JWT_SECRET, 
+        {expiresIn: '30d',}
+    )
+}
+
 
 
 module.exports = {
