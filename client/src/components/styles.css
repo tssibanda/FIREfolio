@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Noto+Sans:wght@100&display=swap');
+
+html{
+	background: #17213c;
+	font-family: 'Noto Sans', sans-serif;
+	
+}
+body{
+	color: #bacae4 !important;
+}
+#root{
+	background: #17213c;
+}
+.navbar-brand{
+	font-family: 'Mochiy Pop P One', sans-serif;
+}
+a:link{
+	text-decoration: none;
+	color: #FFFFFF !important;
+}
+a .orange-font{
+	color: #fca11c;
+}
+a .green-font{
+	color: #3be290;
+}
+.header{
+	background: #588cef;
+}
+.bg-dark{
+	background: #588cef !important;
+}
+.nav-link{
+	text-transform: uppercase;	
+}
+.active{
+	font-weight: bolder;
+}
+.login a{
+	padding-right: 10px;
+}
+.rounded-corners{
+	border-radius: 10px;
+}
+.top-rounded-corners{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.bg1{
+	background:#272e48;
+}
+.vr{
+	color: #8793a6;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.title{
+	font-size: 17px;
+	text-transform: capitalize;
+}
+.title2{
+	font-size: 15px;
+	text-transform: capitalize;
+}
+.money-stat{
+	font-size: 17px;
+	font-weight: bolder;
+	text-transform: capitalize;
+}
+.balance{
+	font-size: 28px;
+	font-weight: bolder;
+}
+.p1-growth{
+	color: #3be290;
+	font-size: 30px;
+	font-weight: 700;
+}
+.dashboard-asset-symbol{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.dashboard-asset-name{
+	text-transform: capitalize;
+}
+.border-bottom {
+    border-bottom: 1px solid #4a5265!important;
+}
+.p-bottom-0{
+	padding-bottom: 0px !important;
+}
+.p-gain{
+	color: #3be290;
+	font-size: 18px;
+	font-weight: 700;
+}
+.n-loss{
+	color: #e7606f;
+	font-size: 18px;
+	font-weight: 700;
+}
+.reg-heading{
+	font-size: 58px;
+	font-weight: bold;
+	text-align: center
+}
+.reg-msg{
+	text-align: center;
+	font-size: 22px;
+	color: #588cef;
+}
