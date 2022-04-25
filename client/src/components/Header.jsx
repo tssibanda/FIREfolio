@@ -1,7 +1,20 @@
 import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {logout, reset} from '../features/auth/authSlice'
 
 function Header() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector((state) => state.auth)
+
+    const onLogout = () => {
+        dispatch(logout())
+        dispatch(reset())
+        navigate('/login')
+    }
+
+
   return (
     <header className='header top-rounded-corners my-4'>
         <div className="navbar navbar-expand-lg navbar-dark bg-dark top-rounded-corners">
@@ -17,13 +30,22 @@ function Header() {
                 <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                     <div className='navbar-nav me-auto mb-2 mb-lg-0'>
                         <NavLink to='/' className='nav-link'>dashboard</NavLink>
-                        <NavLink to='/Portfolio' className='nav-link'>portfolio</NavLink>
-                        <NavLink to='/Dividends' className='nav-link'>dividends</NavLink>
-                        <NavLink to='/StockAnalyser' className='nav-link'>stock analyser</NavLink>
+                        <NavLink to='/portfolio' className='nav-link'>portfolio</NavLink>
+                        <NavLink to='/dividends' className='nav-link'>dividends</NavLink>
+                        <NavLink to='/stockanalyser' className='nav-link'>stock analyser</NavLink>
                     </div>
                     <div className='navbar-text login'>
-                        <Link to='/Login' ><FaSignInAlt /> login</Link>
-                        <Link to='/Register' ><FaUser /> register</Link>
+                        {user ? (
+                                    <button className='btn awsfont' onClick={onLogout}>
+                                        <FaSignOutAlt /> logout
+                                    </button>
+                            ) : (
+                                    <>
+                                        <Link to='/login' className='awsfont'><FaSignInAlt /> login</Link>
+                                        <Link to='/register' className='awsfont'><FaUser /> register</Link>
+                                    </>
+                        )}
+                        
                     </div>
                 </div>
             </div>
