@@ -60,16 +60,14 @@ const updateStock = asyncHandler(async (req, res) => {
         throw new Error('Stock not in portfolio')
     }
 
-    const user = await User.findById(req.user.id)
-
     //check user exists
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
     // check logged in user is updating their own stocks
-    if(stock.user.toString() !== user.id){
+    if(stock.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('User not authorised')
     }
@@ -94,16 +92,14 @@ const deleteStock = asyncHandler(async (req, res) => {
         throw new Error('Stock not in portfolio')
     }
 
-    const user = await User.findById(req.user.id)
-
     //check user exists
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
     // check logged in user is updating their own stocks
-    if(stock.user.toString() !== user.id){
+    if(stock.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('User not authorised')
     }

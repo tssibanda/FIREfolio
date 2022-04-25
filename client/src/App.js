@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
 
 // import components
 import Header from './components/Header';
@@ -11,6 +12,10 @@ import Portfolio from './pages/Portfolio';
 import Register from './pages/Register';
 import StockAnalyser from './pages/StockAnalyser';
 
+// import css
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   return (
     <>
@@ -19,15 +24,15 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Dashboard />} />
-          <Route path='/Dividends' element={<Dividends />} />
-          <Route path='/Portfolio' element={<Portfolio />} />
-          <Route path='/StockAnalyser' element={<StockAnalyser />} />
+          <Route path='/dividends' element={<Dividends />} />
+          <Route path='/portfolio' element={<Portfolio />} />
+          <Route path='/stockanalyser' element={<StockAnalyser />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
         </Routes>
       </div>
-
       </Router>
+      <ToastContainer />
     </>
   );
 }

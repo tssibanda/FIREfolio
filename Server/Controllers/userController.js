@@ -96,13 +96,7 @@ const loginUser = asyncHandler(async (req, res) => {
     Access:         private
 *****************************/
 const getAccount = asyncHandler(async (req, res) => {
-    const {_id, fullname, email} = await User.findById(req.user.id)
-
-    res.status(200).json({
-        id: _id,
-        fullname,
-        email,
-    })
+    res.status(200).json(req.user)
 })
 
 // Function to generate Json Web Token
