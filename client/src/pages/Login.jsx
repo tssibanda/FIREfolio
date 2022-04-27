@@ -49,9 +49,18 @@ function Login() {
         dispatch(login(userData))
     }
 
-    if(isLoading) {
-        return <Loading />
-    }  
+    if(isLoading){
+        return (
+          <div className='container'>
+          <div className='row'>
+            <div className='col-md-4 col-sm-12 m-auto'>
+              <Loading />
+            </div>
+          </div>
+          
+        </div>
+        )
+      }
 
   return (
     <div className='container'>

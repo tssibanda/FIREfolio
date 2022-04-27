@@ -118,3 +118,14 @@ a .green-font{
 	text-transform: uppercase;
 	color: #fff;
 }
+.white-font{
+	color: #ffffff;
+}
+.gain{
+	font-weight: 600;
+	color: #3be290;
+}
+.loss{
+	font-weight: 600;
+	color: #e7606f;
+}

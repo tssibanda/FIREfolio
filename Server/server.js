@@ -32,6 +32,7 @@ app.use(express.urlencoded({extended: false}))
 // routes
 app.use('/api/portfolio', require('./Routes/portfolioRoutes'))
 app.use('/api/users', require('./Routes/userRoutes'))
+app.use('/api/price', require('./Routes/stockPriceRoutes'))
 
 // error handlers
 app.use(errorHandler)

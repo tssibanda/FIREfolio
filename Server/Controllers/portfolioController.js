@@ -5,11 +5,21 @@
 // express async handler for the database
 const asyncHandler = require('express-async-handler')
 
+// import yahoo stocks
+const yahooFinance = require('yahoo-finance2').default;
+
 // import stock schema
 const Stock = require('../Models/stockModel')
 
 // import user schema
 const User = require('../Models/userModel')
+
+// function to combine mongodb object and a custom object
+const combineObjects = (target,source) => {
+    const concat = JSON.stringify(target).slice(0,-1)+','+JSON.stringify(source).slice(1)
+    const newObject = JSON.parse(concat)
+    return newObject
+}
 
 /***************************** 
     Descriptioon:   Get Portfolio
@@ -19,7 +29,17 @@ const User = require('../Models/userModel')
 const getPortfolio = asyncHandler(async (req, res) => {
     // get all stocks in DB
     const stocks = await Stock.find({user: req.user.id})
-    res.status(200).json(stocks)
+
+    let response = []
+
+    for(let i = 0; i<stocks.length;i++){
+        // console.log(stocks[i].symbol)
+        let quote = await yahooFinance.quote(stocks[i].symbol)
+        delete quote.symbol
+        const target = stocks[i]
+        response.push(combineObjects(target,quote))         
+    }
+    res.status(200).json(response)
 })
 
 /***************************** 
