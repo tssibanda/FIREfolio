@@ -56,7 +56,6 @@ function Register() {
                 dob,
                 address,
             }
-
             dispatch(register(userData))
         }
     }

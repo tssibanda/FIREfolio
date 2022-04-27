@@ -7,7 +7,7 @@ const router = express.Router()
 // import portfollio controller
 const { getPortfolio, addStock, updateStock, deleteStock, } = require('../Controllers/portfolioController')
 
-// import 
+// import route protector
 const { protectedRoutes } = require('../Middleware/authMiddleware')
 
 // retrieve a stock portfolio and add new stock to portfolio routes
