@@ -76,8 +76,8 @@ a .green-font{
 	font-size: 28px;
 	font-weight: bolder;
 }
-.p1-growth{
-	color: #3be290;
+.p1-loss{
+	color: #e7606f;
 	font-size: 30px;
 	font-weight: 700;
 }
@@ -128,4 +128,28 @@ a .green-font{
 .loss{
 	font-weight: 600;
 	color: #e7606f;
+}
+.p1-growth{
+	color: #3be290;
+	font-size: 30px;
+	font-weight: 700;
+}
+@include media-breakpoint-up(sm) {
+	.p1-growth {
+		color: #3be290;
+		font-size: 10px;
+		font-weight: 700;
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.p1-growth {
+		font-size: 20px;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.p1-growth {
+		font-size: 30px;
+	}
 }

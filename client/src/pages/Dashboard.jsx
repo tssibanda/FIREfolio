@@ -7,6 +7,7 @@ import { FaChartLine, FaArrowUp, FaArrowDown, FaCoins} from 'react-icons/fa'
 
 import DashboardTotals from '../components/DashboardTotals'
 import DashboardAssets from '../components/DashboardAssets'
+import DashboardPie from '../components/DashboardPie'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ function Dashboard() {
           {holdings.length > 0 ? (
             <>
               <DashboardTotals holdings={holdings}/>
-              <div className='row p-md-4 '>
+              <div className='row p-md-4 my-4'>
                 <div className=' col-12 bg1 rounded-corners'>
                   <div className='row'>
                     <div className='col-12 p-3 mx-md-2 p-bottom-0'>
@@ -58,7 +59,7 @@ function Dashboard() {
               </div>
             </>            
           ) : (
-              <div className='row p-md-4'>
+              <div className='row p-md-4 my-4'>
                 <div className=' col-12 bg1 rounded-corners'>
                   <div className='row'>
                     <div className='col-12'>
@@ -69,6 +70,21 @@ function Dashboard() {
               </div>
           )}
         </div>
+
+        {/* Right pane */}
+        <div className='col-md-5 col-sm-12'>
+          <div className='row p-md-4'>
+            <div className='col-12 bg1 rounded-corners'>
+              <div className='row'>
+                <div className='col-12 p-3 mx-md-2'>
+                  <DashboardPie holdings={holdings}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
     </div>
   )
