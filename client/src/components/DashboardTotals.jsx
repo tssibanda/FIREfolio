@@ -1,4 +1,4 @@
-import { FaChartLine, FaArrowUp, FaArrowDown, FaCoins, FaMoneyBillAlt} from 'react-icons/fa'
+import {FaArrowUp, FaArrowDown, FaCoins, FaMoneyBillAlt} from 'react-icons/fa'
 function DashboardTotals({holdings}) {
     const totalBalance = (holdings) =>{
         let total = 0
@@ -63,7 +63,7 @@ function DashboardTotals({holdings}) {
                 {growth(holdings) > 0 ? (
                     <p className='p1-growth vertical-center'>+{growth(holdings)}%</p>
                 ) : (
-                    <p className='p1-growth vertical-center'>{growth(holdings)}%</p>
+                    <p className='p1-loss vertical-center'>{growth(holdings)}%</p>
                 )}
                 
                 </div>						
