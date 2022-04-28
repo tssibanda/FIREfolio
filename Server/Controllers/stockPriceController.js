@@ -9,7 +9,6 @@ const yahooFinance = require('yahoo-finance2').default;
     Access:         Private
 *****************************/
 const getStockPrice = asyncHandler(async (req, res) => {
-    console.log(req.query)
     const quote = await yahooFinance.quote(req.query.symbol)
     res.status(200).send({
         symbol: quote.symbol,

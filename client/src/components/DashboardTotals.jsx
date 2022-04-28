@@ -31,10 +31,10 @@ function DashboardTotals({holdings}) {
                 <div className='row'>
                     <div className='col-12 p-3 mx-md-2'>
                         <p className='title py-0 my-1'>total balance</p>
-                        {totalBalance(holdings) > totalInvestment(holdings) ? (
-                            <p className='balance py-0 gain'>€{totalBalance(holdings)}</p>
+                        {growth(holdings) > 0 ? (
+                            <p className='balance py-0 gain'>${totalBalance(holdings)}</p>
                         ) : (
-                            <p className='balance py-0 loss'>€{totalBalance(holdings)}</p>
+                            <p className='balance py-0 loss'>${totalBalance(holdings)}</p>
                         ) }
                         
                     </div>
@@ -42,12 +42,21 @@ function DashboardTotals({holdings}) {
                     <div className='row'>
                         <div className='col-5'>
                             <p className='my-0 title2'><FaMoneyBillAlt className='gain'/> investing</p>
-                            <p className='my-2 money-stat'>€{totalInvestment(holdings)}</p>
+                            <p className='my-2 money-stat'>${totalInvestment(holdings)}</p>
                         </div>
                         <div className='vr g-0'></div>
                         <div className='col-6'>
                             <p className='my-0 title2 mx-md-3 mx-sm-1'><FaArrowUp className='gain'/><FaCoins className=''/><FaArrowDown className='loss'/> Gain/Loss</p>
-                            <p className='my-2 mx-md-3 money-stat' >€{(totalBalance(holdings)-totalInvestment(holdings)).toFixed(2)}</p>
+                            <p className='my-2 mx-md-3 money-stat' >
+                                {totalBalance(holdings)-totalInvestment(holdings) < 0 ? (
+                                    <>-${((totalBalance(holdings)-totalInvestment(holdings)).toFixed(2)) * -1}</>
+                                    
+                                ) : (
+                                    <>+${(totalBalance(holdings)-totalInvestment(holdings)).toFixed(2)}</>
+                                    
+                                )}
+                                
+                            </p>
                         </div>
                     </div>
                     </div>

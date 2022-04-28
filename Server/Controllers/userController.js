@@ -48,7 +48,6 @@ const registerUser = asyncHandler(async (req, res) => {
     })
 
     if(user){
-        console.log(user)
         res.status(201).json({
             _id: user.id,
             fullname: user.fullname,
