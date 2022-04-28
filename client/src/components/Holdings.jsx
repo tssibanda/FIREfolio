@@ -11,9 +11,9 @@ function Holdings({holding}) {
             <td>{holding.no_shares}</td>
             <td>{holding.price_bought_at}</td>
             {holding.regularMarketPrice > holding.price_bought_at ? (
-              <td className='gain'>{holding.regularMarketPrice.toFixed(2)}</td>
+              <td className='gain'>{holding.regularMarketPrice}</td>
             ) : (
-              <td className='loss'>{holding.regularMarketPrice.toFixed(2)}</td>
+              <td className='loss'>{holding.regularMarketPrice}</td>
             )
             
             }

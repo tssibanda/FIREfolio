@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {addHolding} from '../features/portfolio/portfolioSlice'
 
@@ -13,6 +14,7 @@ function AddStockForm() {
   })
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const {symbol, date_bought, price_bought_at, no_shares, notes} = formData
 
@@ -33,6 +35,7 @@ function AddStockForm() {
       no_shares:'',
       notes:'',
     })
+    navigate('/portfolio')
   }
 
   

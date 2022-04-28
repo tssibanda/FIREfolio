@@ -33,7 +33,6 @@ const getPortfolio = asyncHandler(async (req, res) => {
     let response = []
 
     for(let i = 0; i<stocks.length;i++){
-        // console.log(stocks[i].symbol)
         let quote = await yahooFinance.quote(stocks[i].symbol)
         delete quote.symbol
         const target = stocks[i]

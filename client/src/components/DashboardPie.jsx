@@ -36,7 +36,6 @@ function DashboardPie({holdings}) {
         return ((( totalBalance(holdings) - totalInvestment(holdings) ) / totalInvestment(holdings))*100).toFixed(2)
     }
     const legend = (stocks) => {
-        console.log(stocks)
         return(
             <>
                 <div className='row'>
@@ -68,7 +67,6 @@ function DashboardPie({holdings}) {
             color: colors[i],
         })
     }
-    // console.log(data)
 
     const [active, setActive] = useState(null)
     const sq = 300;
@@ -107,7 +105,7 @@ function DashboardPie({holdings}) {
                             ) : (
                                 <>
                                     <Text textAnchor='middle' fill='#e7606f' className='p1-loss' dy={-20}>🡇</Text>
-                                    <Text textAnchor='middle' fill='#e7606f' className='p1-loss' dy={20}>{`+${growth(holdings)}`}%</Text>
+                                    <Text textAnchor='middle' fill='#e7606f' className='p1-loss' dy={20}>{`${growth(holdings)}`}%</Text>
                                     <Text textAnchor='middle' fill='#e7606f' className='' dy={50}>{`${holdings.length} Assets`}</Text>                            
                                 </>
                             )}                    
@@ -121,7 +119,7 @@ function DashboardPie({holdings}) {
                     {stocks.map(stock =>(
                         <div className='row'>
                             <div className='col-6'><p className='dashboard-asset-symbol'><FaStop color={stock.color}/>  {stock.symbol}</p></div>
-                            <div className='col'><p className='dashboard-asset-symbol'>${stock.value}</p></div>
+                            <div className='col'><p className='dashboard-asset-symbol'>${(stock.value).toFixed(2)}</p></div>
                         </div>
                     ))}
                 </div>            
