@@ -2,6 +2,9 @@
 *   Backend of the web application
 */
 
+// import cors
+const cors = require('cors')
+
 // Backend webframerork
 const express = require('express')
 
@@ -28,11 +31,13 @@ const app = express()
 //
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+app.use(cors())
 
 // routes
 app.use('/api/portfolio', require('./Routes/portfolioRoutes'))
 app.use('/api/users', require('./Routes/userRoutes'))
-app.use('/api/price', require('./Routes/stockPriceRoutes'))
+// app.use('/api/price', require('./Routes/stockPriceRoutes'))
+app.use('/api/stockanalyser', require('./Routes/stockAnalyerRoutes'))
 
 // error handlers
 app.use(errorHandler)

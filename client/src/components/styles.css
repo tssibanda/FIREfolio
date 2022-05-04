@@ -134,6 +134,9 @@ a .green-font{
 	font-size: 30px;
 	font-weight: 700;
 }
+.center{
+	text-align: center;
+}
 @include media-breakpoint-up(sm) {
 	.p1-growth {
 		color: #3be290;

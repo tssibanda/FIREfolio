@@ -1,13 +1,15 @@
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import Loading from '../components/Loading'
-import {getPortfolio, reset} from '../features/portfolio/portfolioSlice'
-import { FaChartLine, FaArrowUp, FaArrowDown, FaCoins} from 'react-icons/fa'
+import {getPortfolio} from '../features/portfolio/portfolioSlice'
+// import { FaChartLine, FaArrowUp, FaArrowDown, FaCoins} from 'react-icons/fa'
 
+
+import Loading from '../components/Loading'
 import DashboardTotals from '../components/DashboardTotals'
 import DashboardAssets from '../components/DashboardAssets'
 import DashboardPie from '../components/DashboardPie'
+import StockAnalyserForm from '../components/StockAnalyserForm'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -73,18 +75,27 @@ function Dashboard() {
 
         {/* Right pane */}
         <div className='col-md-5 col-sm-12'>
-          <div className='row p-md-4'>
+          <div className=' pie row p-md-4'>
             <div className='col-12 bg1 rounded-corners'>
               <div className='row'>
                 <div className='col-12 p-3 mx-md-2'>
                   <DashboardPie holdings={holdings}/>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='stockanalyser row p-md-4 my-4 '>
+            <div className='col-12 bg1 rounded-corners'>
+              <div className='row '>
+                <div className='col-12 p-3 mx-md-2'>
+                  <StockAnalyserForm />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        
       </div>
     </div>
   )

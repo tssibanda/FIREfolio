@@ -1,0 +1,11 @@
+https://firefolioml-api.herokuapp.com/api
+
+NODE_ENV = dev
+PORT = 3050
+MONGO_URI = mongodb+srv://c18727971:thamu1234@sibanda.excyc.mongodb.net/FIREfolio?retryWrites=true&w=majority
+JWT_SECRET = aAno$rzCiVgIml%DqUHGW^ZHSD&Xs@@%mFsA8lQu1WqxYf076$FFf^bS$@7!gcixGtpoJCT589&P0&w^8@x6Ul33ii
+WML_API_KEY ="Ra2RINZpGRqTMdefsDjMNz55EVLDWKFbbH2Bcke6jFns"
+WML_INSTANCE_ID = "958ec0b7-0a5f-4196-a4c2-e1c715a6d115"
+WML_URL = "https://eu-gb.ml.cloud.ibm.com"
+WML_SCORING_URL = "https://eu-gb.ml.cloud.ibm.com/ml/v4/deployments/958ec0b7-0a5f-4196-a4c2-e1c715a6d115/predictions?version=2022-05-03"
+AUTH_URL = 'https://iam.bluemix.net/identity/token' 
