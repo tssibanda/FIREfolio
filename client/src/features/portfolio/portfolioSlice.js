@@ -2,9 +2,11 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 // import portfolio service
 import portfolioService from './portfolioService'
+// import predService from '../prediction/predService'
 
 
 const initialState = {
+    // predictions:[],
     holdings:[],
     isError: false,
     isSuccess: false,
