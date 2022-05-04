@@ -42,7 +42,7 @@ app.use('/api/users', require('./Routes/userRoutes'))
 app.use('/api/stockanalyser', require('./Routes/stockAnalyerRoutes'))
 
 // serve frontend
-if(process.env.NODE_ENV === 'PROD'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, '../client/build')))
     app.get('*', (req, res) => res.sendFile(
         path.resolve(__dirname, '../', 'client', 'build', 'index.html')
