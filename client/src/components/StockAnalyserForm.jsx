@@ -22,9 +22,6 @@ function StockAnalyserForm() {
     const onSubmit = e => {
         e.preventDefault()
         dispatch(getPrediction(formData))
-        // setFormData({
-        //     symbol: ''
-        // })
     }
 
   return (
@@ -49,7 +46,7 @@ function StockAnalyserForm() {
                     { predictions.prediction > predictions.prev_close ? (
                         <h1 className='p-gain center'>Its a Buy 🡅</h1>
                     ) : (
-                        <h1 className='p-loss center'>Its a Sell 🡇</h1>
+                        <h1 className='n-loss center'>Its a Sell 🡇</h1>
                     )}
                 </div>
             </div>
