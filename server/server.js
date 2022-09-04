@@ -2,6 +2,8 @@
 *   Backend of the web application
 */
 
+//
+const path = require('path')
 // import cors
 const cors = require('cors')
 
@@ -39,6 +41,16 @@ app.use('/api/users', require('./Routes/userRoutes'))
 // app.use('/api/price', require('./Routes/stockPriceRoutes'))
 app.use('/api/stockanalyser', require('./Routes/stockAnalyerRoutes'))
 
+// serve frontend
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../client/build')))
+    app.get('*', (req, res) => res.sendFile(
+        path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+        )
+    )
+}else{
+    app.get('/', (req,res) => res.send('Please set environment to production'))
+}
 // error handlers
 app.use(errorHandler)
 
