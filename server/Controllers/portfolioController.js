@@ -14,10 +14,19 @@ const Stock = require('../Models/stockModel')
 // import user schema
 const User = require('../Models/userModel')
 
+const http = require('http')
+const https = require('https')
+const request = require('request-promise')
+const axios = require('axios');
+
 // function to combine mongodb object and a custom object
-const combineObjects = (target,source) => {
-    const concat = JSON.stringify(target).slice(0,-1)+','+JSON.stringify(source).slice(1)
+const combineObjects = (target,source,hist) => {
+    let newHist = hist.data.slice(0,-1)
+    let newHist2 = newHist.slice(1)
+
+    const concat = JSON.stringify(target).slice(0,-1)+','+newHist2+','+JSON.stringify(source).slice(1)
     const newObject = JSON.parse(concat)
+    
     return newObject
 }
 
@@ -30,13 +39,56 @@ const getPortfolio = asyncHandler(async (req, res) => {
     // get all stocks in DB
     const stocks = await Stock.find({user: req.user.id})
 
+
+    // display contents of stocks variable
+    let ts = Date.now();
+    let date_ob = new Date(ts);
+    let ey = date_ob.getFullYear();
+    let em = 0
+    let ed = 0
+    if(date_ob.getMonth()+1 < 10){
+        em = '-0'+(date_ob.getMonth()+1)
+    }else{
+        em = '-'+(date_ob.getMonth()+1)
+    }
+    if(date_ob.getDate() < 10){
+        ed = '-0'+date_ob.getDate()
+    }else{
+        ed = '-'+date_ob.getDate()
+    }
+    
+    
+    let eDate = ey+em+ed
+
     let response = []
 
-    for(let i = 0; i<stocks.length;i++){
-        let quote = await yahooFinance.quote(stocks[i].symbol)
+    for(const element of stocks){
+        let quote = await yahooFinance.quote(element.symbol)
+        let date1 = element.date_bought
+        let sy = date1.getFullYear()
+        let sm = 0
+        let sd = 0
+        if(date1.getMonth()+1 < 10){
+            sm = '-0'+(date1.getMonth()+1)
+        }else{
+            sm = '-'+(date1.getMonth()+1)
+        }
+        if(date1.getDate() < 10){
+            sd = '-0'+date1.getDate()
+        }else{
+            sd = '-'+date1.getDate()
+        }
+        let sDate = sy+sm+sd
+        let histor = 0
+        try {
+            histor = await axios.get(`${process.env.HIST_DATA_API}?symbol=${element.symbol}&start=${sDate}&end=${eDate}`)
+        } catch (error) {
+            console.log(error.histor.body);
+        }
         delete quote.symbol
-        const target = stocks[i]
-        response.push(combineObjects(target,quote))         
+        const target = element
+        const newt = combineObjects(target,quote,histor)
+        response.push(newt)         
     }
     res.status(200).json(response)
 })
