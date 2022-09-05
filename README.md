@@ -1,7 +1,7 @@
 # FIREfolio
 Link to live project:
-    https://firefolio.herokuapp.com/portfolio
-    
+    <a href="https://firefolio.herokuapp.com/portfolio" target="_blank">https://firefolio.herokuapp.com/portfolio</a>
+
 To Install and run Application on local machine:
 Part 1.
 1.      in the local machine, create a fyp_project folder
