@@ -38,7 +38,6 @@ app.use(cors())
 // routes
 app.use('/api/portfolio', require('./Routes/portfolioRoutes'))
 app.use('/api/users', require('./Routes/userRoutes'))
-// app.use('/api/price', require('./Routes/stockPriceRoutes'))
 app.use('/api/stockanalyser', require('./Routes/stockAnalyerRoutes'))
 
 // serve frontend

@@ -35,7 +35,7 @@ const getPrediction = asyncHandler(async (req,res)=>{
         "Low":Low
      }
      
-    pred = JSON.stringify(query)
+    const pred = JSON.stringify(query)
 
     const scoring_options = {
         method:'POST',
