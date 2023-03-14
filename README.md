@@ -17,3 +17,7 @@ Part 2.
 2.      cd into fyp_project/FIREfolio/client
 3.      npm install
 4.      npm start client (the application should lauch.)
+
+Demo Login Credentials
+Email Address: tssibanda@hotmail.com
+Password: password
