@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:3050",
+  "proxy": "https://firefolio.onrender.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
